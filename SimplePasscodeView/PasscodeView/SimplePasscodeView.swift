@@ -14,7 +14,7 @@ import UIKit
 
 public class SimplePasscodeView: UIView {
     
-    @IBOutlet private weak var passcodeStackView: UIStackView!
+    @IBOutlet private weak var passcodeStackView: UIStackView?
     
     private var contentView: UIView?
     private var passcodeText = String()
@@ -51,6 +51,7 @@ public class SimplePasscodeView: UIView {
 extension SimplePasscodeView: PasscodeConfigurable {
     
     private func setupPasscodeStackView() {
+        guard let passcodeStackView = passcodeStackView else { return }
         placeHolderViews.forEach { (view) in
             passcodeStackView.addArrangedSubview(view)
         }
@@ -63,7 +64,7 @@ extension SimplePasscodeView: PasscodeConfigurable {
         guard 0..<length ~= customSpacingPosition else { return }
         passcodeStackView.distribution = .fill
         passcodeStackView.setCustomSpacing(CGFloat(customSpacing),
-                                           after: passcodeStackView.arrangedSubviews[customSpacingPosition])
+                                            after: passcodeStackView.arrangedSubviews[customSpacingPosition])
     }
     
     private var placeHolderViews: [PinView] {
@@ -76,7 +77,7 @@ extension SimplePasscodeView: PasscodeConfigurable {
     }
     
     public func clear() {
-        passcodeStackView.arrangedSubviews.forEach { (view) in
+        passcodeStackView?.arrangedSubviews.forEach { (view) in
             if let pinView = view as? PinView {
                 pinView.update(with: false, andText: nil, isSecureEntry: isSecureEntry)
             }
@@ -94,7 +95,7 @@ extension SimplePasscodeView {
         guard canInsertCharacters() else { return }
         passcodeText.append(text)
         
-        guard let view = passcodeStackView.arrangedSubviews.filter({ (view) -> Bool in
+        guard let view = passcodeStackView?.arrangedSubviews.filter({ (view) -> Bool in
             if let pinView = view as? PinView,
                 pinView.isEmpty() {
                 return true
@@ -115,7 +116,7 @@ extension SimplePasscodeView {
         passcodeText.removeLast()
         delegate?.didDeleteBackward?()
         
-        guard let view = passcodeStackView.arrangedSubviews.filter({ (view) -> Bool in
+        guard let view = passcodeStackView?.arrangedSubviews.filter({ (view) -> Bool in
             if let pinView = view as? PinView,
                 !pinView.isEmpty() {
                 return true
