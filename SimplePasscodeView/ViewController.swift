@@ -19,7 +19,6 @@ class ViewController: UIViewController {
         
         passcodeView.isSecureEntry = true
         passcodeView.length = 5
-        passcodeView.keyboardType = .numberPad
         
         passcodeView.pinborderColor = UIColor.blue.cgColor
         passcodeView.pinfillColor = UIColor.lightGray

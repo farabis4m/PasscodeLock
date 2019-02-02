@@ -8,15 +8,14 @@
 import UIKit
 
 private enum PinViewDefaults {
-    static let pinViewWidth: CGFloat       = 30.0
-    static let pinViewHeight: CGFloat      = 40.0
+    static let pinViewWidth: CGFloat  = 30.0
+    static let pinViewHeight: CGFloat = 40.0
 }
 
 class PinView: UIView, PinViewConfigurable {
-    
     private lazy var indicator = PinIndicator()
     private lazy var pinLabel  = UILabel()
-    private lazy var isFilled: Bool = false
+    private lazy var isFilled  = false
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -44,7 +43,7 @@ class PinView: UIView, PinViewConfigurable {
         return !isFilled
     }
     
-    internal func update(fill: Bool, andText: String?, isSecureEntry: Bool) {
+    internal func update(with fill: Bool, andText: String?, isSecureEntry: Bool) {
         isFilled = fill
         if isSecureEntry {
             if fill {

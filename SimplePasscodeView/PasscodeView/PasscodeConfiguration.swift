@@ -8,43 +8,41 @@
 import UIKit
 
 // Pin Appreance Defaults
-private var font                 = UIFont.systemFont(ofSize: 22)
-private var fontColor            = UIColor.black
+private var font: UIFont         = .systemFont(ofSize: 22)
+private var fontColor: UIColor   = .black
 private var borderColor          = UIColor.lightGray.cgColor
-private var fillColor            = UIColor.lightGray
+private var fillColor: UIColor   = .lightGray
 private var borderWidth: CGFloat = 1.0
 private var size: CGSize         = CGSize(width: 20.0, height: 20.0)
 
 public protocol PinViewConfigurable {
-    var pinfont: UIFont {get set}
-    var pinfontColor: UIColor {get set}
-    var pinborderColor: CGColor {get set}
-    var pinfillColor: UIColor {get set}
-    var pinborderWidth: CGFloat {get set}
-    var pinSize: CGSize {get set}
+    var pinfont: UIFont { get set }
+    var pinfontColor: UIColor { get set }
+    var pinborderColor: CGColor { get set }
+    var pinfillColor: UIColor { get set }
+    var pinborderWidth: CGFloat { get set }
+    var pinSize: CGSize { get set }
 }
 
 public extension PinViewConfigurable {
     var pinfont: UIFont {
-        get {return font}
-        set {font =  newValue}}
+        get { return font }
+        set { font =  newValue }}
     var pinfontColor: UIColor {
-        get {return fontColor}
-        set {fontColor =  newValue}}
+        get { return fontColor }
+        set { fontColor =  newValue }}
     var pinborderColor: CGColor {
-        get {return borderColor}
-        set {borderColor =  newValue}}
+        get { return borderColor }
+        set { borderColor =  newValue }}
     var pinfillColor: UIColor {
-        get {return fillColor}
-        set {fillColor =  newValue}}
+        get { return fillColor }
+        set { fillColor =  newValue }}
     var pinborderWidth: CGFloat {
-        get {return borderWidth}
-        set {borderWidth = newValue}
-    }
+        get { return borderWidth }
+        set { borderWidth = newValue }}
     var pinSize: CGSize {
-        get {return size}
-        set {size = newValue}
-    }
+        get { return size }
+        set { size = newValue }}
 }
 
 // Passcode Appreance Defaults
@@ -55,28 +53,28 @@ private var passcodeCustomSpacingPosition  = -1
 private var passcodeCustomSpacing          = 20
 
 public protocol PasscodeConfigurable: PinViewConfigurable {
-    var length: Int {get set}
-    var isSecureEntry: Bool {get set}
-    var defaultSpacing: Float {get set}
-    var customSpacingPosition: Int {get set}
-    var customSpacing: Int {get set}
+    var length: Int { get set }
+    var isSecureEntry: Bool { get set }
+    var defaultSpacing: Float { get set }
+    var customSpacingPosition: Int { get set }
+    var customSpacing: Int { get set }
 }
 
 public extension PasscodeConfigurable {
     var length: Int {
-        get {return passcodeLength}
-        set {passcodeLength =  newValue}}
+        get { return passcodeLength }
+        set { passcodeLength =  newValue }}
     var isSecureEntry: Bool {
-        get {return passcodeIsSecureEntry}
-        set {passcodeIsSecureEntry =  newValue}}
+        get { return passcodeIsSecureEntry }
+        set { passcodeIsSecureEntry =  newValue }}
     var defaultSpacing: Float {
-        get {return passcodeDefaultSpacing}
-        set {passcodeDefaultSpacing =  newValue}}
+        get { return passcodeDefaultSpacing }
+        set { passcodeDefaultSpacing =  newValue }}
     var customSpacingPosition: Int {
-        get {return passcodeCustomSpacingPosition}
-        set {passcodeCustomSpacingPosition =  newValue}}
+        get { return passcodeCustomSpacingPosition }
+        set { passcodeCustomSpacingPosition =  newValue }}
     var customSpacing: Int {
-        get {return passcodeCustomSpacing}
-        set {passcodeCustomSpacing =  newValue}}
+        get { return passcodeCustomSpacing }
+        set { passcodeCustomSpacing =  newValue }}
 }
 

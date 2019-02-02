@@ -6,9 +6,7 @@
 //
 
 import UIKit
-
 class PinIndicator: UIView {
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         rounded()
@@ -23,7 +21,7 @@ extension PinIndicator: PinViewConfigurable {
     }
     
     func clearView() {
-        backgroundColor = UIColor.clear
+        backgroundColor = .clear
     }
     
     func fillView() {

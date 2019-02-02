@@ -78,7 +78,7 @@ extension SimplePasscodeView: PasscodeConfigurable {
     public func clear() {
         passcodeStackView.arrangedSubviews.forEach { (view) in
             if let pinView = view as? PinView {
-                pinView.update(fill: false, andText: nil, isSecureEntry: isSecureEntry)
+                pinView.update(with: false, andText: nil, isSecureEntry: isSecureEntry)
             }
         }
         passcodeText.removeAll()
@@ -102,7 +102,7 @@ extension SimplePasscodeView {
             return false
         }).first as? PinView else { return }
         
-        view.update(fill: true, andText: text, isSecureEntry: isSecureEntry)
+        view.update(with: true, andText: text, isSecureEntry: isSecureEntry)
         
         if passcodeText.count == length {
             delegate?.didFinishEntering(passcodeText)
@@ -123,7 +123,7 @@ extension SimplePasscodeView {
             return false
         }).last as? PinView else { return  }
         
-        view.update(fill: false, andText: nil, isSecureEntry: isSecureEntry)
+        view.update(with: false, andText: nil, isSecureEntry: isSecureEntry)
     }
     
     private func canInsertCharacters() -> Bool {
