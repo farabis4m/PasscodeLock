@@ -12,12 +12,16 @@ private var font                 = UIFont.systemFont(ofSize: 22)
 private var fontColor            = UIColor.black
 private var borderColor          = UIColor.lightGray.cgColor
 private var fillColor            = UIColor.lightGray
+private var borderWidth: CGFloat = 1.0
+private var size: CGSize         = CGSize(width: 20.0, height: 20.0)
 
 public protocol PinViewConfigurable {
     var pinfont: UIFont {get set}
     var pinfontColor: UIColor {get set}
     var pinborderColor: CGColor {get set}
     var pinfillColor: UIColor {get set}
+    var pinborderWidth: CGFloat {get set}
+    var pinSize: CGSize {get set}
 }
 
 public extension PinViewConfigurable {
@@ -33,6 +37,14 @@ public extension PinViewConfigurable {
     var pinfillColor: UIColor {
         get {return fillColor}
         set {fillColor =  newValue}}
+    var pinborderWidth: CGFloat {
+        get {return borderWidth}
+        set {borderWidth = newValue}
+    }
+    var pinSize: CGSize {
+        get {return size}
+        set {size = newValue}
+    }
 }
 
 // Passcode Appreance Defaults

@@ -18,7 +18,7 @@ class PinIndicator: UIView {
 extension PinIndicator: PinViewConfigurable {
     func rounded() {
         layer.cornerRadius = frame.width / 2
-        layer.borderWidth = 1
+        layer.borderWidth = pinborderWidth
         layer.borderColor = pinborderColor
     }
     

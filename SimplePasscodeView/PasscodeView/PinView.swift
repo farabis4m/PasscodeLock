@@ -10,8 +10,6 @@ import UIKit
 private enum PinViewDefaults {
     static let pinViewWidth: CGFloat       = 30.0
     static let pinViewHeight: CGFloat      = 40.0
-    static let pinIndicatorWidth: CGFloat  = 10.0
-    static let pinIndicatorHeight: CGFloat = 10.0
 }
 
 class PinView: UIView, PinViewConfigurable {
@@ -36,8 +34,8 @@ class PinView: UIView, PinViewConfigurable {
         
         addSubview(indicator)
         indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.widthAnchor.constraint(equalToConstant: PinViewDefaults.pinIndicatorWidth).isActive = true
-        indicator.heightAnchor.constraint(equalToConstant: PinViewDefaults.pinIndicatorHeight).isActive = true
+        indicator.widthAnchor.constraint(equalToConstant: pinSize.width).isActive = true
+        indicator.heightAnchor.constraint(equalToConstant: pinSize.height).isActive = true
         indicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         indicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }

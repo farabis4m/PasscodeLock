@@ -7,9 +7,9 @@
 
 import UIKit
 
-public protocol SimplePasscodeDelegate: class {
+@objc public protocol SimplePasscodeDelegate: class {
     func didFinishEntering(_ passcode: String)
-    func didDeleteBackward()
+    @objc optional func didDeleteBackward()
 }
 
 public class SimplePasscodeView: UIView {
@@ -20,8 +20,7 @@ public class SimplePasscodeView: UIView {
     private var passcodeText = String()
     
     public weak var delegate: SimplePasscodeDelegate?
-    public var keyboardType: UIKeyboardType = .numberPad
-
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -30,15 +29,13 @@ public class SimplePasscodeView: UIView {
         super.layoutSubviews()
         setup()
     }
-
+    
     private func setup() {
         if (contentView == nil) {
             contentView = loadViewFromNib()
             contentView?.frame = bounds
             guard let view = contentView else {return}
             addSubview(view)
-            
-            let _ = becomeFirstResponder()
             setupPasscodeStackView()
         }
     }
@@ -79,27 +76,16 @@ extension SimplePasscodeView: PasscodeConfigurable {
     }
     
     public func clear() {
-        UIView.animate(withDuration: 0.3) {
-            self.passcodeStackView.arrangedSubviews.forEach { (view) in
-                if let pinView = view as? PinView {
-                    pinView.update(fill: false, andText: nil, isSecureEntry: self.isSecureEntry)
-                }
+        passcodeStackView.arrangedSubviews.forEach { (view) in
+            if let pinView = view as? PinView {
+                pinView.update(fill: false, andText: nil, isSecureEntry: isSecureEntry)
             }
-            self.passcodeText.removeAll()
         }
+        passcodeText.removeAll()
     }
 }
 
-extension SimplePasscodeView: UIKeyInput {
-    
-    override public var canBecomeFirstResponder: Bool {
-        return true
-    }
-    
-    override public func becomeFirstResponder() -> Bool {
-        return super.becomeFirstResponder()
-    }
-    
+extension SimplePasscodeView {
     public var hasText: Bool {
         return !passcodeText.isEmpty
     }
@@ -127,7 +113,7 @@ extension SimplePasscodeView: UIKeyInput {
         guard hasText else { return }
         
         passcodeText.removeLast()
-        delegate?.didDeleteBackward()
+        delegate?.didDeleteBackward?()
         
         guard let view = passcodeStackView.arrangedSubviews.filter({ (view) -> Bool in
             if let pinView = view as? PinView,
