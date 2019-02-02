@@ -82,6 +82,9 @@ extension SimplePasscodeView: PasscodeConfigurable {
                 pinView.update(with: false, andText: nil, isSecureEntry: isSecureEntry)
             }
         }
+        
+        // remove all text
+        guard hasText else { return }
         passcodeText.removeAll()
     }
 }
