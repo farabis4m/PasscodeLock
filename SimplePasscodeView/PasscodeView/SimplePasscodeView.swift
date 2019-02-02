@@ -64,7 +64,7 @@ extension SimplePasscodeView: PasscodeConfigurable {
         guard 0..<length ~= customSpacingPosition else { return }
         passcodeStackView.distribution = .fill
         passcodeStackView.setCustomSpacing(CGFloat(customSpacing),
-                                            after: passcodeStackView.arrangedSubviews[customSpacingPosition])
+                                           after: passcodeStackView.arrangedSubviews[customSpacingPosition])
     }
     
     private var placeHolderViews: [PinView] {
@@ -74,6 +74,12 @@ extension SimplePasscodeView: PasscodeConfigurable {
             views.append(pinView)
         }
         return views
+    }
+}
+
+extension SimplePasscodeView {
+    private var hasText: Bool {
+        return !passcodeText.isEmpty
     }
     
     public func clear() {
@@ -86,12 +92,6 @@ extension SimplePasscodeView: PasscodeConfigurable {
         // remove all text
         guard hasText else { return }
         passcodeText.removeAll()
-    }
-}
-
-extension SimplePasscodeView {
-    public var hasText: Bool {
-        return !passcodeText.isEmpty
     }
     
     public func insertText(_ text: String) {
