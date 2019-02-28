@@ -12,7 +12,7 @@ import UIKit
     @objc optional func didDeleteBackward()
 }
 
-public class SimplePasscodeView: UIView {
+open class SimplePasscodeView: UIView {
     
     @IBOutlet private weak var passcodeStackView: UIStackView?
     
@@ -25,7 +25,7 @@ public class SimplePasscodeView: UIView {
         super.init(coder: aDecoder)
     }
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         setup()
     }
