@@ -15,7 +15,7 @@ private var fillColor: UIColor   = .lightGray
 private var borderWidth: CGFloat = 1.0
 private var size: CGSize         = CGSize(width: 20.0, height: 20.0)
 
-protocol PinViewConfigurable {
+public protocol PinViewConfigurable {
     var pinfont: UIFont { get set }
     var pinfontColor: UIColor { get set }
     var pinborderColor: CGColor { get set }
@@ -24,7 +24,7 @@ protocol PinViewConfigurable {
     var pinSize: CGSize { get set }
 }
 
-extension PinViewConfigurable {
+public extension PinViewConfigurable {
     var pinfont: UIFont {
         get { return font }
         set { font =  newValue }}
@@ -52,7 +52,7 @@ private var passcodeDefaultSpacing: Float  = 5
 private var passcodeCustomSpacingPosition  = -1
 private var passcodeCustomSpacing          = 20
 
-protocol PasscodeConfigurable: PinViewConfigurable {
+public protocol PasscodeConfigurable: PinViewConfigurable {
     var length: Int { get set }
     var isSecureEntry: Bool { get set }
     var defaultSpacing: Float { get set }
@@ -60,7 +60,7 @@ protocol PasscodeConfigurable: PinViewConfigurable {
     var customSpacing: Int { get set }
 }
 
-extension PasscodeConfigurable {
+public extension PasscodeConfigurable {
     var length: Int {
         get { return passcodeLength }
         set { passcodeLength =  newValue }}
