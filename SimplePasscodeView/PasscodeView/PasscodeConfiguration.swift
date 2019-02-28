@@ -10,10 +10,10 @@ import UIKit
 // Pin Appreance Defaults
 private var font: UIFont         = .systemFont(ofSize: 22)
 private var fontColor: UIColor   = .black
-private var borderColor          = UIColor.lightGray.cgColor
-private var fillColor: UIColor   = .lightGray
-private var borderWidth: CGFloat = 1.0
-private var size: CGSize         = CGSize(width: 20.0, height: 20.0)
+private var borderColor          = UIColor.white.cgColor
+private var fillColor: UIColor   = .white
+private var borderWidth: CGFloat = 1.5
+private var size: CGSize         = CGSize(width: 16.0, height: 16.0)
 
 public protocol PinViewConfigurable {
     var pinfont: UIFont { get set }
